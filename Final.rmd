@@ -95,8 +95,13 @@ male_plot_percent +
 The Barplots above shows the number of males infected with covid. Visually males who take the vaccine have less covid than the placebo but the results are similarly close to the placebo on both graphs. Visually they are still different but we need to conduct a statistical analysis to confirm if the difference significant.
 
 ### Numerical Results
+```{r}
+table1 <- xtabs(~infected + treatment, data=Male)
+rowPerc(table1)
+colPerc(table1)
+```
 
-
+The numerical results show that in the infected males, **73.8%** had taken the placebo, while **26.2%** had taken the vaccine. For those who are OK, **50.01%** had taken the placebo, and **49.99%** had taken the vaccine. Overall, **2.82%** of males on the placebo have covid compared to **1.02%** on the vaccine, indicating that the vaccine reduces infection rates. These findings suggest the vaccine is effective in lowering covid with the males. With this we can coorelate this to the barplots proving the effectiveness.
 
 ### Inferential Results
 
