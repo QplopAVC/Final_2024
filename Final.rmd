@@ -140,8 +140,22 @@ The odds ratio indicates that males who received the vaccine were nearly **2.8**
 ## Females
 
 ### Summary of Females
+```{r}
+### Summary of Females
+female_summary <- Female %>%
+  group_by(treatment, infected) %>%
+  summarise(count = n(), .groups = "drop") %>%
+  pivot_wider(names_from = infected, values_from = count, values_fill = 0)
+female_summary <- female_summary %>%
+  mutate(total = rowSums(select(., -treatment)))
+female_column_totals <- female_summary %>%
+  summarise(across(where(is.numeric), sum)) %>%
+  mutate(treatment = "Total")
+female_summary <- bind_rows(female_summary, female_column_totals)
+female_summary
+```
 
-
+This is the given information so far for the females. There are 18328 females. 365 have covid while 17963 are OK. This isn't enough to show a trend so now let us add a barplot for a visual representation.
 
 ### Visual Results
 
