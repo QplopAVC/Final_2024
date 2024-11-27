@@ -454,3 +454,10 @@ The covid vaccine is **76.6% effective** for gays, with a confidence interval ra
 Overall, the vaccine significantly reduces the likelihood of infection for gays, supporting its effectiveness in this group.
 
 ## Conclusion for Druggies
+
+The covid vaccine is **91.3% effective** for drug users, with a confidence interval ranging from **78.0% to 97.3%**. Statistical tests strongly support this conclusion:
+
+- Fisher's Exact Test showed an extremely significant p-value (\(p = 3 \times 10^{-12}\)), rejecting the null hypothesis of no vaccine impact.
+- The odds ratio of **0.087** indicates that drug users who received the vaccine were **approximately 11.5 times less likely** to get infected compared to those on the placebo.
+
+Overall, the vaccine has **maximum effectiveness** in reducing covid infection rates in drug users, supporting its strong protective effect in this group.
