@@ -74,8 +74,8 @@ male_summary_data <- Male %>%
   mutate(prcnt = count / sum(count))
 
 # Bar plot for count of infected vs treatment
-basicC <- ggplot(male_summary_data, aes(x = infected, y = count, fill = treatment))
-basicC + 
+male_plot_count <- ggplot(male_summary_data, aes(x = infected, y = count, fill = treatment))
+male_plot_count + 
   geom_bar(stat = "identity", position = "dodge") +
   labs(title = "Number of Males Infected by Treatment",
        x = "Infection Status", y = "Count of Infected Males") +
@@ -83,8 +83,8 @@ basicC +
   theme_minimal()
 
 # Bar plot for percentage of infected vs treatment
-basicCC <- ggplot(male_summary_data, aes(x = infected, y = prcnt * 100, fill = treatment))
-basicCC + 
+male_plot_percent <- ggplot(male_summary_data, aes(x = infected, y = prcnt * 100, fill = treatment))
+male_plot_percent + 
   geom_bar(stat = "identity", position = "dodge") +
   labs(title = "Percentage of Males Infected by Treatment",
        x = "Infection Status", y = "Percentage of Infected Males") +
