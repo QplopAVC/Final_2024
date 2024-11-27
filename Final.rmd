@@ -400,8 +400,28 @@ The key result to focus on is Fisher's Exact Test, where the p-value is extremel
 
 The odds ratio is approximately **0.087**, showing that drug users who received the vaccine were **11.5** times less likely to get covid compared to those who received the placebo. These results suggest that the vaccine is **highly effective** at preventing covid in drug users. This aligns with the numerical results showing reduced infection rates among vaccinated individuals in this population.
 
-### Effectivness Results: low to high
+```{r}
+# Calculate effectiveness
+DrugUserfish <- fisher.test(table4)
+effectiveness_drug <- (1 - DrugUserfish$estimate) * 100
+print(effectiveness_drug)
 
+# Calculate effectiveness confidence level
+drug_low <- (1 - DrugUserfish$conf.int[2]) * 100  
+drug_hi <- (1 - DrugUserfish$conf.int[1]) * 100  
+options(digits = 2)
 
+#print
+drug_low
+drug_hi
+```
+
+### `r effectiveness_drug`% Effectiveness with Confidence Interval: `r drug_low`%  to `r drug_hi`%
+
+Above is the effectiveness of the covid vaccine for drug users. If the vaccine's effectiveness is above **50%**, it indicates that the vaccine is effective. Based on the calculated effectiveness of **91.3%** and the confidence interval ranging from **78.0%** to **97.3%**, we can conclude that the vaccine is **highly effective** in reducing infection rates among drug users.
+
+The null hypothesis (\(H_0\)) assumed that the vaccine has no impact on infection rates, while the alternative hypothesis (\(H_A\)) posited that the vaccine reduces infection rates. Given the very small p-value from Fisher’s Exact Test and the calculated odds ratio of **0.087**, we reject the null hypothesis and accept the alternative, confirming that the vaccine does reduce infection rates in drug users.
+
+The odds ratio of **0.087** indicates that drug users who received the vaccine were approximately **11.5** times less likely to get covid compared to those who received the placebo. Since the odds ratio is less than **1**, this means the vaccine has the **maximum possible effectiveness**. The confidence interval further supports this, showing a **95%** range of effectiveness between **78.0%** and **97.3%**, reinforcing the vaccine's significant protective effect for drug users.
 
 # Overall Results and Conclusions
