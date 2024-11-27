@@ -380,7 +380,13 @@ druguser_plot_percent +
 The barplots above show the number of drug users infected with covid. Visually, drug users who take the vaccine have more covid compared to those on the placebo. While the difference appears significant visually, we need to conduct a statistical analysis to confirm if the difference is statistically significant.
 
 ### Numerical Results
+```{r}
+table4 <- xtabs(~infected + treatment, data=DrugUser)
+rowPerc(table4)
+colPerc(table4)
+```
 
+The numerical results show that among infected drug users, **8.3%** had taken the placebo, while **91.7%** had taken the vaccine. For those who are OK, **51.0%** had taken the placebo, and **49.0%** had taken the vaccine. Overall, **0.33%** of drug users on the placebo contracted covid compared to **3.6%** on the vaccine, indicating that the vaccine was associated with a higher infection rate in this group. These findings suggest that the vaccine may not be effective in lowering covid rates among drug users. This aligns with the barplots, which visually depict the higher infection rates among vaccinated drug users.
 
 
 ### Inferential Results
