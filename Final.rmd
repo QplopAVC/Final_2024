@@ -45,6 +45,23 @@ A new preventative vaccine (covid921) is under test in clinical trials. Given th
    
 ## Males
 
+### Summary of Males
+```{r}
+male_summary <- Male %>%
+  group_by(treatment, infected) %>%
+  summarise(count = n(), .groups = "drop") %>%
+  pivot_wider(names_from = infected, values_from = count, values_fill = 0)
+male_summary <- male_summary %>%
+  mutate(total = rowSums(select(., -treatment)))
+male_column_totals <- male_summary %>%
+  summarise(across(where(is.numeric), sum)) %>%
+  mutate(treatment = "Total")
+male_summary <- bind_rows(male_summary, male_column_totals)
+male_summary
+```
+
+This is the given information so far for the males. There are 18392 males. 355 have covid while 18037 are OK. This isn't enough to show a trend so now let us add a barplot for a visual representation.
+
 
 ## Females
 
