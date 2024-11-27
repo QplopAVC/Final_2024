@@ -446,4 +446,11 @@ Overall, while the vaccine shows some protective effect in females, its effectiv
 
 ## Conclusion for LGBTQ
 
+The covid vaccine is **76.6% effective** for gays, with a confidence interval ranging from **55.06% to 88.74%**. Statistical tests strongly support this conclusion:
+
+- Fisher's Exact Test showed a highly significant p-value (\(p = 7 \times 10^{-7}\)), rejecting the null hypothesis of no vaccine impact.
+- The odds ratio of **4.3** indicates that gays who received the vaccine were nearly **4.3 times more likely** to get infected compared to those on the placebo.
+
+Overall, the vaccine significantly reduces the likelihood of infection for gays, supporting its effectiveness in this group.
+
 ## Conclusion for Druggies
