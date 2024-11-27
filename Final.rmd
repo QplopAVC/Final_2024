@@ -111,7 +111,7 @@ Malefish <- fisher.test(table1)
 Malefish
 ```
 
-The key result to focus on is Fisher's Exact Test, where the p-value is extremely small (\(p < 2.2 \times 10^{-16}\)) or **0.00000000000000022**. This means the observed differences in infection rates between the vaccine and placebo groups are very unlikely to occur by chance. The null hypothesis, which assumes infection rates are independent of treatment, is rejected. The odds ratio of about **2.82** shows that males who received the vaccine were nearly **2.8** times more likely to get covid compared to those who received the placebo. These results indicate the vaccine is not effective at preventing covid in males.
+The key result to focus on is Fisher's Exact Test, where the p-value is extremely small (\(p < 2.2 \times 10^{-16}\)) or **0.00000000000000022**. This means the observed differences in infection rates between the vaccine and placebo groups are very unlikely to occur by chance. The null hypothesis, which assumes infection rates are independent of treatment, is rejected. The odds ratio of about **2.82** shows that males who received the vaccine were nearly **2.8** times more likely to get covid compared to those who received the placebo. These results indicate the vaccine is **ineffective** at preventing covid in males.
 
 ```{r}
 # Calculate effectiveness
@@ -291,8 +291,14 @@ colPerc(table3)
 The numerical results show that in the infected gays, **80%** had taken the placebo, while **20%** had taken the vaccine. For those who are OK, **48%** had taken the placebo, and **52%** had taken the vaccine. Overall, **3.2%** of gay individuals on the placebo have covid compared to **0.77%** on the vaccine, indicating that the vaccine reduces infection rates. These findings suggest the vaccine is effective in lowering covid rates in gays. This aligns with the barplots showing the vaccine's effectiveness.
 
 ### Inferential Results
+```{r}
+chisq.test(table3)
+chisqtestGC(table3)
+Gayfish <- fisher.test(table3)
+Gayfish
+```
 
-
+The key result to focus on is Fisher's Exact Test, where the p-value is extremely small (**p = 7e-07**) or **0.0000007**, indicating that the observed differences in infection rates between the vaccine and placebo groups are very unlikely to have occurred by chance. The null hypothesis, which assumes infection rates are independent of treatment, is rejected. The odds ratio of about **4.3** shows that gay individuals who received the vaccine were nearly **4.3** times more likely to get covid compared to those who received the placebo. These results suggest that the vaccine is **ineffective** at preventing covid in gays.
 
 ### Effectivness Results: low to high
 
