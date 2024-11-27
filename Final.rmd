@@ -113,10 +113,29 @@ Malefish
 
 The key result to focus on is Fisher's Exact Test, where the p-value is extremely small (\(p < 2.2 \times 10^{-16}\)) or **0.00000000000000022**. This means the observed differences in infection rates between the vaccine and placebo groups are very unlikely to occur by chance. The null hypothesis, which assumes infection rates are independent of treatment, is rejected. The odds ratio of about **2.82** shows that males who received the vaccine were nearly **2.8** times more likely to get covid compared to those who received the placebo. These results indicate the vaccine is not effective at preventing covid in males.
 
+```{r}
+# Calculate effectiveness
+male_effect <- Malefish$p.value / (Malefish$p.value + 1)
+effectiveness_male <- (1 - 1 / Malefish$estimate) * 100
+print(effectiveness_male)
 
-### Effectivness Results: low to high
+# Calculate effectiveness confidence interval
+male_low <- (1 - 1 / Malefish$conf.int[1]) * 100
+male_hi <- (1 - 1 / Malefish$conf.int[2]) * 100
+options(digits = 2)
 
+#print 
+male_low
+male_hi
+```
 
+### `r effectiveness_male`% Effectiveness with Confidence Interval: `r male_low`%  to `r male_hi`%
+
+Above is the effectiveness of the covid vaccine for males. If the vaccine's effectiveness is above **50%**, it indicates that the vaccine is effective. Based on the calculated effectiveness of **64.48%** and the confidence interval ranging from **54.75%** to **72.32%**, we can conclude that the vaccine is effective in reducing infection rates among males.
+
+The null hypothesis (\(H_0\)) assumed that the vaccine has no impact on infection rates, while the alternative hypothesis (\(H_A\)) posited that the vaccine reduces infection rates. Given the very small p-value from Fisher’s Exact Test and the calculated odds ratio of **2.82**, we reject the null hypothesis and accept the alternative, confirming that the vaccine does reduce infection rates in males.
+
+The odds ratio indicates that males who received the vaccine were nearly **2.8** times more likely to avoid contracting covid compared to those who received the placebo. The confidence interval further supports this, showing a **95%** range of effectiveness between **54.75%**% and **72.32%**, reinforcing the vaccine's significant protective effect.
 
 ## Females
 
