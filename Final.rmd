@@ -351,8 +351,33 @@ druguser_summary
 This is the given information so far for the drug users. There are 3060 drug users. 60 have covid while 3000 are OK. This isn't enough to show a trend so now let us add a barplot for a visual representation.
 
 ### Visual Results
+```{r}
+# Summarize the data for DrugUser by infection status and treatment
+druguser_summary_data <- DrugUser %>%
+  group_by(infected, treatment) %>%
+  summarize(count = n(), .groups = "drop") %>%
+  mutate(prcnt = count / sum(count))
 
+# Bar plot for count of infected vs treatment
+druguser_plot_count <- ggplot(druguser_summary_data, aes(x = infected, y = count, fill = treatment))
+druguser_plot_count + 
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Number of Drug Users Infected by Treatment",
+       x = "Infection Status", y = "Count of Infected Drug Users") +
+  scale_fill_manual(values = c("placebo" = "gray", "vaccine" = "blue")) +
+  theme_minimal()
 
+# Bar plot for percentage of infected vs treatment
+druguser_plot_percent <- ggplot(druguser_summary_data, aes(x = infected, y = prcnt * 100, fill = treatment))
+druguser_plot_percent + 
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Percentage of Drug Users Infected by Treatment",
+       x = "Infection Status", y = "Percentage of Infected Drug Users") +
+  scale_fill_manual(values = c("placebo" = "gray", "vaccine" = "blue")) +
+  theme_minimal()
+```
+
+The barplots above show the number of drug users infected with covid. Visually, drug users who take the vaccine have more covid compared to those on the placebo. While the difference appears significant visually, we need to conduct a statistical analysis to confirm if the difference is statistically significant.
 
 ### Numerical Results
 
