@@ -437,6 +437,13 @@ Overall, the vaccine significantly reduces the likelihood of infection for males
 
 ## Conclusion for Females
 
+The covid vaccine is **46.13% effective** for females, with a confidence interval ranging from **32.79% to 56.98%**. Statistical tests provide further insight:
+
+- Fisher's Exact Test resulted in a significant p-value (\(p = 1 \times 10^{-8}\)), rejecting the null hypothesis that there is no vaccine effect.
+- The odds ratio of **1.9** indicates that females who received the vaccine were nearly **1.9 times more likely** to get infected compared to those who received the placebo.
+
+Overall, while the vaccine shows some protective effect in females, its effectiveness is limited and should be carefully considered for this group.
+
 ## Conclusion for LGBTQ
 
 ## Conclusion for Druggies
