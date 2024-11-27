@@ -92,7 +92,7 @@ male_plot_percent +
   theme_minimal()
 ```
 
-The Barplots above shows the number of males infected with covid. Visually males who take the vaccine have less covid than the placebo but the results are similarly close to the placebo on both graphs. Visually they are still different but we need to conduct a statistical analysis to confirm if the difference significant.
+The Barplots above shows the number of males infected with covid. Visually males who take the vaccine have less covid than the placebo but the results are similarly close to the placebo on both graphs. Visually they are still different but we need to conduct a statistical analysis to confirm if the difference is significant.
 
 ### Numerical Results
 ```{r}
@@ -158,8 +158,35 @@ female_summary
 This is the given information so far for the females. There are 18328 females. 365 have covid while 17963 are OK. This isn't enough to show a trend so now let us add a barplot for a visual representation.
 
 ### Visual Results
+```{r}
+# Bar plot
 
+# Summarize the data for Females by infection status and treatment
+female_summary_data <- Female %>%
+  group_by(infected, treatment) %>%
+  summarize(count = n(), .groups = "drop") %>%
+  mutate(prcnt = count / sum(count))
 
+# Bar plot for count of infected vs treatment
+female_plot_count <- ggplot(female_summary_data, aes(x = infected, y = count, fill = treatment))
+female_plot_count + 
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Number of Females Infected by Treatment",
+       x = "Infection Status", y = "Count of Infected Females") +
+  scale_fill_manual(values = c("placebo" = "gray", "vaccine" = "blue")) +
+  theme_minimal()
+
+# Bar plot for percentage of infected vs treatment
+female_plot_percent <- ggplot(female_summary_data, aes(x = infected, y = prcnt * 100, fill = treatment))
+female_plot_percent + 
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Percentage of Females Infected by Treatment",
+       x = "Infection Status", y = "Percentage of Infected Females") +
+  scale_fill_manual(values = c("placebo" = "gray", "vaccine" = "blue")) +
+  theme_minimal()
+```
+
+The Barplots above shows the number of females infected with covid. Visually females who take the vaccine have less covid than the placebo but the results are similarly close to the placebo on both graphs. Visually they are still different but we need to conduct a statistical analysis to confirm if the difference is significant.
 
 ### Numerical Results
 
