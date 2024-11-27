@@ -23,7 +23,7 @@ FinalData$treatment <- relevel(FinalData$treatment,ref="placebo")
 Male = filter(FinalData, sex =="M")
 Female = filter(FinalData, sex =="F")
 Gay = filter(FinalData, LGBTQ =="gay")
-Druguser = filter(FinalData, DrugUser =="yes")
+DrugUser = filter(FinalData, DrugUser =="yes")
 ```
 
 # Introduction
@@ -64,7 +64,35 @@ This is the given information so far for the males. There are 18392 males. 355 h
 
 ### Visual Results
 
+```{r}
+# Bar plot
 
+# Summarize the data for Males by infection status and treatment
+male_summary_data <- Male %>%
+  group_by(infected, treatment) %>%
+  summarize(count = n(), .groups = "drop") %>%
+  mutate(prcnt = count / sum(count))
+
+# Bar plot for count of infected vs treatment
+basicC <- ggplot(male_summary_data, aes(x = infected, y = count, fill = treatment))
+basicC + 
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Number of Males Infected by Treatment",
+       x = "Infection Status", y = "Count of Infected Males") +
+  scale_fill_manual(values = c("placebo" = "gray", "vaccine" = "blue")) +
+  theme_minimal()
+
+# Bar plot for percentage of infected vs treatment
+basicCC <- ggplot(male_summary_data, aes(x = infected, y = prcnt * 100, fill = treatment))
+basicCC + 
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Percentage of Males Infected by Treatment",
+       x = "Infection Status", y = "Percentage of Infected Males") +
+  scale_fill_manual(values = c("placebo" = "gray", "vaccine" = "blue")) +
+  theme_minimal()
+```
+
+The Barplots above shows the number of males infected with covid. Visually males who take the vaccine have less covid than the placebo but the results are similarly close to the placebo on both graphs. Visually they are still different but we need to conduct a statistical analysis to confirm if the difference significant.
 
 ### Numerical Results
 
