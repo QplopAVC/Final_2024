@@ -111,7 +111,7 @@ Malefish <- fisher.test(table1)
 Malefish
 ```
 
-The key result to focus on is Fisher's Exact Test, where the p-value is extremely small (\(p < 2.2 \times 10^{-16}\)) or **0.00000000000000022**. This means the observed differences in infection rates between the vaccine and placebo groups are very unlikely to occur by chance. The null hypothesis, which assumes infection rates are independent of treatment, is rejected. The odds ratio of about **2.82** shows that males who received the vaccine were nearly **2.8** times more likely to get covid compared to those who received the placebo. These results indicate the vaccine is **ineffective** at preventing covid in males.
+The key result to focus on is Fisher's Exact Test, where the p-value is extremely small (\(p = 2.2 \times 10^{-16}\)) or **0.00000000000000022**. This means the observed differences in infection rates between the vaccine and placebo groups are very unlikely to occur by chance. The null hypothesis, which assumes infection rates are independent of treatment, is rejected. The odds ratio of about **2.82** shows that males who received the vaccine were nearly **2.8** times more likely to get covid compared to those who received the placebo. These results indicate the vaccine is **ineffective** at preventing covid in males.
 
 ```{r}
 # Calculate effectiveness
@@ -204,7 +204,7 @@ Femalefish <- fisher.test(table2)
 Femalefish
 ```
 
-The key result to focus on is Fisher's Exact Test, where the p-value is extremely small (`p = 1e-08`) or **0.00000001**, indicating that the observed differences in infection rates between the vaccine and placebo groups are very unlikely to have occurred by chance. The null hypothesis, which assumes infection rates are independent of treatment, is rejected. The odds ratio of about **1.9** shows that females who received the vaccine were nearly **1.9** times more likely to get covid compared to those who received the placebo. These results suggest that the vaccine is **ineffective** at preventing covid in females.
+The key result to focus on is Fisher's Exact Test, where the p-value is extremely small (\(p = 1 \times 10^{-8}\)) or **0.00000001**, indicating that the observed differences in infection rates between the vaccine and placebo groups are very unlikely to have occurred by chance. The null hypothesis, which assumes infection rates are independent of treatment, is rejected. The odds ratio of about **1.9** shows that females who received the vaccine were nearly **1.9** times more likely to get covid compared to those who received the placebo. These results suggest that the vaccine is **ineffective** at preventing covid in females.
 
 ```{r}
 # Calculate effectiveness
@@ -298,7 +298,7 @@ Gayfish <- fisher.test(table3)
 Gayfish
 ```
 
-The key result to focus on is Fisher's Exact Test, where the p-value is extremely small (**p = 7e-07**) or **0.0000007**, indicating that the observed differences in infection rates between the vaccine and placebo groups are very unlikely to have occurred by chance. The null hypothesis, which assumes infection rates are independent of treatment, is rejected. The odds ratio of about **4.3** shows that gay individuals who received the vaccine were nearly **4.3** times more likely to get covid compared to those who received the placebo. These results suggest that the vaccine is **ineffective** at preventing covid in gays.
+The key result to focus on is Fisher's Exact Test, where the p-value is extremely small (\(p = 7 \times 10^{-7}\)) or **0.0000007**, indicating that the observed differences in infection rates between the vaccine and placebo groups are very unlikely to have occurred by chance. The null hypothesis, which assumes infection rates are independent of treatment, is rejected. The odds ratio of about **4.3** shows that gay individuals who received the vaccine were nearly **4.3** times more likely to get covid compared to those who received the placebo. These results suggest that the vaccine is **ineffective** at preventing covid in gays.
 
 ```{r}
 # Calculate effectiveness
@@ -388,10 +388,17 @@ colPerc(table4)
 
 The numerical results show that among infected drug users, **8.3%** had taken the placebo, while **91.7%** had taken the vaccine. For those who are OK, **51.0%** had taken the placebo, and **49.0%** had taken the vaccine. Overall, **0.33%** of drug users on the placebo contracted covid compared to **3.6%** on the vaccine, indicating that the vaccine was associated with a higher infection rate in this group. These findings suggest that the vaccine may not be effective in lowering covid rates among drug users. This aligns with the barplots, which visually depict the higher infection rates among vaccinated drug users.
 
-
 ### Inferential Results
+```{r}
+chisq.test(table4)
+chisqtestGC(table4)
+DrugUserfish <- fisher.test(table4)
+DrugUserfish
+```
 
+The key result to focus on is Fisher's Exact Test, where the p-value is extremely small (\(p = 3 \times 10^{-12}\)) or **0.000000000003**, indicating that the observed differences in infection rates between the vaccine and placebo groups are very unlikely to have occurred by chance. The null hypothesis, which assumes infection rates are independent of treatment, is rejected.
 
+The odds ratio is approximately **0.087**, showing that drug users who received the vaccine were **11.5** times less likely to get covid compared to those who received the placebo. These results suggest that the vaccine is **highly effective** at preventing covid in drug users. This aligns with the numerical results showing reduced infection rates among vaccinated individuals in this population.
 
 ### Effectivness Results: low to high
 
