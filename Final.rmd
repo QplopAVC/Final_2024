@@ -189,8 +189,13 @@ female_plot_percent +
 The Barplots above shows the number of females infected with covid. Visually females who take the vaccine have less covid than the placebo but the results are similarly close to the placebo on both graphs. Visually they are still different but we need to conduct a statistical analysis to confirm if the difference is significant.
 
 ### Numerical Results
+```{r}
+table2 <- xtabs(~infected + treatment, data=Female)
+rowPerc(table2)
+colPerc(table2)
+```
 
-
+The numerical results show that in the infected females, **65%** had taken the placebo, while **35%** had taken the vaccine. For those who are OK, **50%** had taken the placebo, and **50%** had taken the vaccine. Overall, **2.6%** of females on the placebo have covid compared to **1.4%** on the vaccine, indicating that the vaccine reduces infection rates. These findings suggest the vaccine is effective in lowering covid rates in females. This aligns with the barplots showing the vaccine's effectiveness.
 
 ### Inferential Results
 
